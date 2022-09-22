@@ -47,8 +47,10 @@ int wmain() {
 		return(-1);
 
 	while (i < (sizeof(patch) / 8))
-		WriteProcessMemory(hw, (LPVOID)(baseAdd + i), &patch[i++], 1, 0);
-
+	{
+		if (!WriteProcessMemory(hw, (LPVOID)(baseAdd + i), &patch[i++], 1, 0))
+			return (-1);
+	}
 	system("pause");
 	return 0;
 }
