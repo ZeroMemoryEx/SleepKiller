@@ -12,7 +12,7 @@
     
     - The time-out interval elapses.
     
-* it takes 1 parameter ``DWORD`` that represent``dwMilliseconds`` or how many Milli seconds to wait and it doesnt return a value .
+* it takes 1 parameter ``DWORD`` that represent ``dwMilliseconds`` or how many Milli seconds to wait and it doesnt return a value .
 
     ![image](https://user-images.githubusercontent.com/60795188/191631985-4fbbbd5a-e47f-47db-b332-42f690b4cd16.png)
 
