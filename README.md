@@ -1,6 +1,6 @@
 # SleepKiller
 
-* one of common evasion techniques that used by malwares is delays its basicaly delaying execution of malicious behavior in order to evade sandboxes and analysts , it can be very anoying to wait for the malware to do the full execution also analysing it in sandboxes can give you false result because sandboxes are programmed to simply wait and watch for a period of time this is why i made this program .
+* one of common evasion techniques that used by malwares is delays its basically delaying execution of malicious behavior in order to evade sandboxes and analysts , it can be very anoying to wait for the malware to do the full execution also analysing it in sandboxes can give you false result because sandboxes are programmed to simply wait and watch for a period of time this is why i made this program .
 
 # DETAILS
 
