@@ -38,7 +38,7 @@ int wmain() {
 
 	int i = 0;
 	DWORD tpid = 0;
-	HANDLE hw = OpenProcess(PROCESS_ALL_ACCESS, 0, tpid = GetPID("XSleepX.exe"));
+	HANDLE hw = OpenProcess(PROCESS_ALL_ACCESS, 0, tpid = GetPID("Malware.exe"));
 	if (!hw)
 		return (-1);
 
