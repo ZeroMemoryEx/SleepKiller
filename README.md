@@ -32,4 +32,4 @@
 
 # Lastly
 
-* malware may check to see if time was accelerated by getting the timestamp before and after the sleep then compare it ,if the malware gets false calculation, then the malware knows its get patched .
+* malware may check to see if time was accelerated by getting the timestamp before and after the sleep then compare it ,if the malware gets false calculation, then the malware knows its get patched this trick i will make a bypass for it in the next updates.
