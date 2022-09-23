@@ -2,7 +2,7 @@
 #include <tlhelp32.h>
 
 
-char patch[] = { 0xC3 }; // no need for a bunch of NOPs, a single RET should be enough
+char patch[] = { 0xC3 }; 
 
 DWORD GetPID(LPCSTR pn)
 {
@@ -37,7 +37,7 @@ int wmain() {
 	if (!tpid)
 		return -1;
 	
-	HANDLE ProcessHandle = OpenProcess(PROCESS_VM_WRITE, 0, tpid);
+	HANDLE ProcessHandle = OpenProcess(PROCESS_ALL_ACCESS , 0, tpid);
 	if (!ProcessHandle)
 		return (-1);
 
