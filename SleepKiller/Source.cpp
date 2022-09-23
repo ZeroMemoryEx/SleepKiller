@@ -2,11 +2,9 @@
 #include <tlhelp32.h>
 
 
-unsigned long long patch[] = { 0x90, 0x90 ,0x90 ,0x90 ,0x90 ,0x90 ,0x90 ,0x90 ,0x90 ,0x90 ,0x90 ,0xC3
-};
+char patch[] = { 0xC3 }; // no need for a bunch of NOPs, a single RET should be enough
 
-
-DWORD GetPID(const char* pn)
+DWORD GetPID(LPCSTR pn)
 {
 	DWORD procId = 0;
 	HANDLE hSnap = CreateToolhelp32Snapshot(TH32CS_SNAPPROCESS, 0);
@@ -35,22 +33,21 @@ DWORD GetPID(const char* pn)
 }
 
 int wmain() {
-
-	int i = 0;
-	DWORD tpid = 0;
-	HANDLE hw = OpenProcess(PROCESS_ALL_ACCESS, 0, tpid = GetPID("Malware.exe"));
-	if (!hw)
+	DWORD tpid = GetPID("Malware.exe");
+	if (!tpid)
+		return -1;
+	
+	HANDLE ProcessHandle = OpenProcess(PROCESS_VM_WRITE, 0, tpid);
+	if (!ProcessHandle)
 		return (-1);
 
-	unsigned long long baseAdd = (unsigned long long)GetProcAddress(GetModuleHandleA("kernel32.dll"), "Sleep");
-	if (!baseAdd)
+	PVOID NTDEAddr = GetProcAddress(GetModuleHandleA("ntdll.dll"), "NtDelayExecution");
+	if (!NTDEAddr)
 		return(-1);
 
-	while (i < (sizeof(patch) / 8))
-	{
-		if (!WriteProcessMemory(hw, (LPVOID)(baseAdd + i), &patch[i++], 1, 0))
-			return (-1);
-	}
+	if (!WriteProcessMemory(ProcessHandle, NTDEAddr, patch, 1, 0))
+		return (-1);
+	
 	system("pause");
 	return 0;
 }
